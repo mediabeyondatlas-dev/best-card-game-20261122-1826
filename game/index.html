@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Duel — a card battler</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="brand">EMBER DUEL</div>
+    <div id="turn-badge">A duel of sparks and wits</div>
+    <button id="restart-button" type="button">↻ New duel</button>
+  </header>
+
+  <main id="table">
+    <section id="enemy-side" class="side">
+      <div class="duelist">
+        <div class="avatar" id="enemy-avatar"></div>
+        <div class="duelist-info">
+          <div class="duelist-name">Cinder, the Ash Warden</div>
+          <div class="life-row"><span class="life" id="enemy-life">♥ 30</span><span class="life-bar"><span id="enemy-life-fill"></span></span></div>
+        </div>
+        <div class="mana" id="enemy-mana">◆ 0/0</div>
+      </div>
+      <div class="hand-label">Cinder's hand · <span id="enemy-hand-count">3</span> cards · <span id="enemy-deck">Deck: 20</span></div>
+      <div class="hand backs" id="enemy-hand"></div>
+      <div class="board-label">Cinder's creatures — <span id="enemy-strike">Strikes for 0</span></div>
+      <div class="board" id="enemy-board"></div>
+    </section>
+
+    <section id="middle">
+      <div id="log" aria-live="polite"></div>
+      <button id="end-turn" type="button">End turn ⏎</button>
+    </section>
+
+    <section id="player-side" class="side">
+      <div class="board-label">Your creatures — <span id="player-strike">Strikes for 0</span></div>
+      <div class="board" id="player-board"></div>
+      <div class="hand-label">Your hand · <span id="player-deck">Deck: 20</span> · Click a card to play it, keys 1–7 work too</div>
+      <div class="hand" id="player-hand"></div>
+      <div class="duelist">
+        <div class="avatar" id="player-avatar"></div>
+        <div class="duelist-info">
+          <div class="duelist-name">You, the Ember Mage</div>
+          <div class="life-row"><span class="life" id="player-life">♥ 30</span><span class="life-bar"><span id="player-life-fill"></span></span></div>
+        </div>
+        <div class="mana" id="player-mana">◆ 0/0</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="title-screen" class="overlay">
+    <div class="panel">
+      <div class="title-kicker">A duel of sparks and wits</div>
+      <h1>EMBER DUEL</h1>
+      <p class="tagline">Four elements. One table. Reduce Cinder to 0 life before your ember goes out.</p>
+      <div class="rules">
+        <div><b>Each turn</b> you gain mana and draw a card.</div>
+        <div><b>Creatures</b> stand on the table and strike at the end of your turn — a creature summoned this turn rests until the next.</div>
+        <div><b>Spells</b> resolve at once: burn, mend, draw, rally.</div>
+        <div><b>Keys:</b> 1–7 play a card · Enter ends the turn · R starts a new duel.</div>
+      </div>
+      <div class="legend" id="title-legend"></div>
+      <button id="start-button" type="button">Begin the duel</button>
+    </div>
+  </div>
+
+  <div id="end-screen" class="overlay hidden">
+    <div class="panel">
+      <h1 id="end-title" class="end-title win">VICTORY</h1>
+      <p id="end-detail"></p>
+      <button id="play-again-button" type="button">Duel again (R)</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
